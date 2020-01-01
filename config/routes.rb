@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :anchor_requests, only: [:create]
+      resources :anchor_requests, only: [:index, :create]
     end
   end
 end

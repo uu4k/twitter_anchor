@@ -28,5 +28,10 @@ module TwitterAnchor
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.twitter_consumer_api_key = ENV['TWITTER_CONSUMER_API_KEY']
+    config.twitter_consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
+    config.twitter_access_token = ENV['TWITTER_ACCESS_TOKEN']
+    config.twitter_access_secret = ENV['TWITTER_ACCESS_SECRET']
   end
 end
