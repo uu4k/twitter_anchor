@@ -12,7 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2019_12_31_063556) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "anchor_requests", force: :cascade do |t|
+    t.string "created_user_screen_name"
     t.string "event_tweet_id"
     t.string "hash_tag"
     t.datetime "created_at", precision: 6, null: false
@@ -21,21 +25,21 @@ ActiveRecord::Schema.define(version: 2019_12_31_063556) do
 
   create_table "anchors", force: :cascade do |t|
     t.integer "position"
-    t.integer "anchor_requests_id", null: false
+    t.bigint "anchor_requests_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["anchor_requests_id"], name: "index_anchors_on_anchor_requests_id"
   end
 
   create_table "tweet_pools", force: :cascade do |t|
-    t.integer "anchor_requests_id", null: false
+    t.bigint "anchor_requests_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["anchor_requests_id"], name: "index_tweet_pools_on_anchor_requests_id"
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.integer "tweet_pools_id", null: false
+    t.bigint "tweet_pools_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tweet_pools_id"], name: "index_tweets_on_tweet_pools_id"
