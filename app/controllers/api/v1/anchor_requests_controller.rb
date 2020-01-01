@@ -11,7 +11,7 @@ class Api::V1::AnchorRequestsController < ApplicationController
         response_token: "sha256=#{generate_crc_response(Rails.application.config.twitter_consumer_secret, crc_token)}"
       }, status: :ok
     else
-      render status: :ok
+      render json: {}, status: :ok
     end
   end
 
@@ -38,7 +38,7 @@ class Api::V1::AnchorRequestsController < ApplicationController
         render json: @anchor_request.errors, status: :unprocessable_entity
       end
     else
-      render status: :ok
+      render json: {}, status: :ok
     end
   end
 
